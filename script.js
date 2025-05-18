@@ -1,6 +1,22 @@
 let alarmaHora = null;
 let formato24h = true;
 
+// Establecer modo inicial
+const modoGuardado = localStorage.getItem('modo') || 'claro';
+document.body.classList.add(`modo-${modoGuardado}`);
+const icono = document.getElementById('modoIcon');
+icono.classList = modoGuardado === 'oscuro' ? 'fas fa-sun' : 'fas fa-moon';
+
+document.getElementById('modoBtn').addEventListener('click', function () {
+    document.body.classList.toggle('modo-oscuro');
+    document.body.classList.toggle('modo-claro');
+
+    const esModoOscuro = document.body.classList.contains('modo-oscuro');
+    icono.classList = esModoOscuro ? 'fas fa-sun' : 'fas fa-moon';
+    localStorage.setItem('modo', esModoOscuro ? 'oscuro' : 'claro');
+});
+
+
 // Modifica la función del reloj para comprobar la alarma
 function actualizar_reloj() {
     const ahora = new Date();
@@ -58,3 +74,4 @@ document.getElementById('formatoBtn').addEventListener('click', function () {
 
 setInterval(actualizar_reloj, 1000);
 actualizar_reloj();
+

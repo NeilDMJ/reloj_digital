@@ -1,25 +1,94 @@
-body{
+body {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #0f172a;
-    color:#f8fafc;
+    background-color: #F2EFE7;
+    color: #48A6A7;
     font-family: 'Arial', sans-serif;
     margin: 0;
+}
 
-    .clock_container{
-        text-align: center;
-    }
+/* Contenedor del reloj */
+.clock_container {
+    text-align: center;
+}
 
-    #clock{
-        font-size: 5rem;
-        margin: 0;
-    }
+/* Reloj */
+#clock {
+    font-size: 5rem;
+    margin: 0;
+}
 
-    #date{
-        font-size: 2rem;
-        color: #94a3b8;
-    }
+/* Fecha */
+#date {
+    font-size: 2rem;
+    color: #48A6A7;
+}
 
+/* Botón formato */
+#formatoBtn {
+    background-color: #48A6A7;
+    height: 35px;
+    width: 150px;
+    border: none;
+    border-radius: 5px;
+}
+
+#formatoBtn:hover {
+    background-color: #006A71;
+    color: #48A6A7;
+}
+
+/* Botón alarma */
+#alarmaBtn {
+    background-color: #48A6A7;
+    height: 35px;
+    width: 150px;
+    border: none;
+    border-radius: 5px;
+}
+
+#alarmaBtn:hover {
+    background-color: #006A71;
+    color: #48A6A7;
+}
+
+/* Botón modo (claro/oscuro) */
+#modoBtn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 24px;
+    color: inherit;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    transition: transform 0.2s;
+}
+
+#modoBtn:hover {
+    transform: scale(1.2);
+}
+
+body.modo-oscuro {
+    background-color: #121212;
+    color: #f0f0f0;
+}
+
+body.modo-oscuro #date {
+    color: #f0f0f0;
+}
+
+body.modo-oscuro #formatoBtn,
+body.modo-oscuro #alarmaBtn {
+    background-color: #444;
+    color: #f0f0f0;
+}
+
+body.modo-oscuro #formatoBtn:hover,
+body.modo-oscuro #alarmaBtn:hover {
+    background-color: #666;
+    color: #fff;
 }
