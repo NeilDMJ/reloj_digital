@@ -73,22 +73,22 @@ body {
 }
 
 body.modo-oscuro {
-    background-color: #121212;
-    color: #f0f0f0;
+    background-color: #2E073F;
+    color: #EBD3F8;
 }
 
 body.modo-oscuro #date {
-    color: #f0f0f0;
+    color: #EBD3F8;
 }
 
 body.modo-oscuro #formatoBtn,
 body.modo-oscuro #alarmaBtn {
-    background-color: #444;
-    color: #f0f0f0;
+    background-color: #7A1CAC;
+    color: #EBD3F8;
 }
 
 body.modo-oscuro #formatoBtn:hover,
 body.modo-oscuro #alarmaBtn:hover {
-    background-color: #666;
+    background-color: #7A1CAC;
     color: #fff;
 }
