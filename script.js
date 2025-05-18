@@ -1,6 +1,28 @@
 let alarmaHora = null;
 let formato24h = true;
 
+document.getElementById('alarmaBtn').addEventListener('click', function () {
+    const entrada = prompt("Introduce la hora de la alarma (formato HH:MM, 24h):");
+    if (entrada && /^\d{2}:\d{2}$/.test(entrada)) {
+        alarmaHora = entrada;
+        Swal.fire({
+            title: '✅ Alarma establecida',
+            text: `Hora: ${entrada}`,
+            icon: 'success',
+            confirmButtonText: 'Aceptar'
+        });
+
+    } else {
+        Swal.fire({
+            title: '⚠️ Formato inválido',
+            text: 'Usa el formato HH:MM (ej. 07:30)',
+            icon: 'warning',
+            confirmButtonText: 'Entendido'
+        });
+
+    }
+});
+
 // Modifica la función del reloj para comprobar la alarma
 function actualizar_reloj() {
     const ahora = new Date();
@@ -34,21 +56,18 @@ function actualizar_reloj() {
         if (hora_comparar === alarmaHora && segundos === 0) {
             const sonido = document.getElementById('alarma');
             sonido.play().catch(err => console.error("Error al reproducir el audio:", err));
-            alert("⏰ ¡Es hora!");
+            Swal.fire({
+                title: '⏰ ¡Es hora!',
+                text: 'La alarma se ha activado.',
+                icon: 'info',
+                confirmButtonText: 'Aceptar',
+                timer: 5000,
+            })
             alarmaHora = null;
         }
     }
 }
 
-document.getElementById('alarmaBtn').addEventListener('click', function () {
-    const entrada = prompt("Introduce la hora de la alarma (formato HH:MM, 24h):");
-    if (entrada && /^\d{2}:\d{2}$/.test(entrada)) {
-        alarmaHora = entrada;
-        alert("Alarma establecida para las " + entrada);
-    } else {
-        alert("Formato inválido. Usa HH:MM (ej. 07:30)");
-    }
-});
 
 document.getElementById('formatoBtn').addEventListener('click', function () {
     formato24h = !formato24h;
