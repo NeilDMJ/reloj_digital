@@ -2,7 +2,30 @@ let alarmaHora = null;
 let formato24h = true;
 
 document.getElementById('alarmaBtn').addEventListener('click', function () {
-    const entrada = prompt("Introduce la hora de la alarma (formato HH:MM, 24h):");
+    Swal.fire({
+        title: 'Establecer alarma',
+        input: 'text',
+        inputLabel: 'Introduce la hora (formato HH:MM, 24h)',
+        inputPlaceholder: 'Ej. 07:30',
+        showCancelButton: true,
+        confirmButtonText: 'Establecer',
+        cancelButtonText: 'Cancelar',
+        inputValidator: (value) => {
+            if (!/^\d{2}:\d{2}$/.test(value)) {
+            return 'Formato inválido. Usa HH:MM';
+            }
+        }
+        }).then((resultado) => {
+        if (resultado.isConfirmed) {
+            alarmaHora = resultado.value;
+            Swal.fire({
+            title: '✅ Alarma establecida',
+            text: `Hora: ${alarmaHora}`,
+            icon: 'success',
+            confirmButtonText: 'Aceptar'
+            });
+        }
+    });
     if (entrada && /^\d{2}:\d{2}$/.test(entrada)) {
         alarmaHora = entrada;
         Swal.fire({
